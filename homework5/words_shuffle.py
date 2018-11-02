@@ -12,16 +12,15 @@ while i < len(words_from_first_string):
         was_cut = False
 
     word = words_from_first_string[i]
-    for rindex, char in enumerate(word[-1::-1]):
+    for index, char in enumerate(word):
         if char in punct_chars:
-            index = len(word) - rindex - 1
-            tail = word[index + 1:]
-            if tail:
-                words_from_first_string.append(tail)
-
             head = word[:index]
             if head:
-                words_from_first_string[i] = head
+                words_from_first_string.append(head)
+
+            tail = word[index + 1:]
+            if tail:
+                words_from_first_string[i] = tail
                 words_from_first_string.append(char)
                 was_cut = True
                 break
@@ -34,3 +33,5 @@ while i < len(words_from_first_string):
 
     else:
         i += 1
+
+print(words_from_first_string)
